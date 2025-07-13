@@ -6,7 +6,7 @@ interface Notification {
   title: string
   message: string
   duration?: number
-  position?: 'top-right' | 'bottom-left'
+  position?: 'top-right' | 'bottom-left' | 'bottom-left-timer'
 }
 
 interface NotificationContextType {

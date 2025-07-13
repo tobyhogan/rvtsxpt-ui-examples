@@ -1,5 +1,6 @@
 import { useNotifications } from '../contexts/NotificationContext'
 import { useDarkMode } from '../contexts/DarkModeContext'
+import TimerToast from './TimerToast'
 
 function ToastContainer() {
   const { notifications, removeNotification } = useNotifications()
@@ -7,6 +8,7 @@ function ToastContainer() {
 
   const topRightNotifications = notifications.filter(n => n.position === 'top-right')
   const bottomLeftNotifications = notifications.filter(n => n.position === 'bottom-left')
+  const bottomLeftTimerNotifications = notifications.filter(n => n.position === 'bottom-left-timer')
 
   const getNotificationStyles = (type: string) => {
     const baseStyles = "flex items-start p-4 rounded-lg shadow-lg border-l-4 mb-3 transition-all duration-300 transform"
@@ -102,6 +104,23 @@ function ToastContainer() {
       {bottomLeftNotifications.length > 0 && (
         <div className="fixed bottom-4 left-4 z-50 space-y-2 w-80">
           {renderNotifications(bottomLeftNotifications)}
+        </div>
+      )}
+
+      {/* Bottom Left Timer Notifications */}
+      {bottomLeftTimerNotifications.length > 0 && (
+        <div className="fixed bottom-0 left-0 z-50 space-y-2 w-80 p-4">
+          {bottomLeftTimerNotifications.map((notification) => (
+            <TimerToast
+              key={notification.id}
+              id={notification.id}
+              type={notification.type}
+              title={notification.title}
+              message={notification.message}
+              duration={notification.duration || 5000}
+              onRemove={removeNotification}
+            />
+          ))}
         </div>
       )}
     </>

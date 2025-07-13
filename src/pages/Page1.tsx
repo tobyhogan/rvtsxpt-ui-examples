@@ -88,6 +88,47 @@ function Page1() {
     })
   }
 
+  // Bottom-left timer notification functions
+  const showTimerSuccessToast = () => {
+    addNotification({
+      type: 'success',
+      title: 'Timer Success',
+      message: 'Watch the progress bar countdown!',
+      duration: 6000,
+      position: 'bottom-left-timer'
+    })
+  }
+
+  const showTimerErrorToast = () => {
+    addNotification({
+      type: 'error',
+      title: 'Timer Error',
+      message: 'This error will auto-dismiss with timer.',
+      duration: 8000,
+      position: 'bottom-left-timer'
+    })
+  }
+
+  const showTimerWarningToast = () => {
+    addNotification({
+      type: 'warning',
+      title: 'Timer Warning',
+      message: 'Time-based warning notification.',
+      duration: 7000,
+      position: 'bottom-left-timer'
+    })
+  }
+
+  const showTimerInfoToast = () => {
+    addNotification({
+      type: 'info',
+      title: 'Timer Info',
+      message: 'Information with visual countdown.',
+      duration: 5000,
+      position: 'bottom-left-timer'
+    })
+  }
+
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -229,6 +270,40 @@ function Page1() {
                   className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm border border-blue-400"
                 >
                   ↙ Info Toast
+                </button>
+              </div>
+            </div>
+
+            {/* Timer Toast Notifications */}
+            <div className={`rounded-xl p-6 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
+              <h3 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Timer Toast Notifications</h3>
+              <p className={`text-sm mb-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                These toasts show a countdown progress bar and timer - watch them disappear automatically!
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <button 
+                  onClick={showTimerSuccessToast}
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm border-2 border-green-300"
+                >
+                  ⏱️ Success (6s)
+                </button>
+                <button 
+                  onClick={showTimerErrorToast}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm border-2 border-red-300"
+                >
+                  ⏱️ Error (8s)
+                </button>
+                <button 
+                  onClick={showTimerWarningToast}
+                  className="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors text-sm border-2 border-yellow-300"
+                >
+                  ⏱️ Warning (7s)
+                </button>
+                <button 
+                  onClick={showTimerInfoToast}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm border-2 border-blue-300"
+                >
+                  ⏱️ Info (5s)
                 </button>
               </div>
             </div>
