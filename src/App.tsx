@@ -1,12 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import Header from './components/Header'
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
 
-function App() {
+function AppContent() {
+  const { isDarkMode } = useDarkMode()
+  
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <Header />
         <main>
           <Routes>
@@ -16,6 +19,14 @@ function App() {
         </main>
       </div>
     </Router>
+  )
+}
+
+function App() {
+  return (
+    <DarkModeProvider>
+      <AppContent />
+    </DarkModeProvider>
   )
 }
 
