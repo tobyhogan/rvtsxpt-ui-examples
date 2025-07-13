@@ -60,6 +60,17 @@ function Header() {
               >
                 Todoist
               </Link>
+
+              <Link
+                to="/page5"
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                  isActive('/page5')
+                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                Glassmorphism
+              </Link>
               
             </div>
           </div>
