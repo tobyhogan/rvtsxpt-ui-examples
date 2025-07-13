@@ -9,25 +9,26 @@ function Header() {
 
   return (
     <header className={`shadow-sm border-b ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white'}`}>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="ml-[60px] mr-[40px] sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className={`text-xl font-bold ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
-                My App
+                UI Design Examples
               </Link>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <div className="hidden sm:ml-9 sm:flex sm:space-x-8">
               <Link
                 to="/"
-                className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
                   isActive('/')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
-                Modern 1
+                Designs 1
               </Link>
+              {/*
               <Link
                 to="/second"
                 className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
@@ -38,6 +39,7 @@ function Header() {
               >
                 Duolingo-esque
               </Link>
+              */}
             </div>
           </div>
           <div className="flex items-center">
