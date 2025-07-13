@@ -134,7 +134,7 @@ function Page1() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Hero Section */}
-        <div className={`rounded-2xl p-8 mb-8 ${isDarkMode ? 'bg-gradient-to-r from-blue-900 to-purple-900' : 'bg-gradient-to-r from-blue-600 to-purple-600'}`}>
+        <div className={`rounded-2xl p-6 mb-8 ${isDarkMode ? 'bg-gradient-to-r from-blue-900 to-purple-900' : 'bg-gradient-to-r from-blue-600 to-purple-600'}`}>
           <h1 className="text-4xl font-bold text-white mb-4">Modern UI Components</h1>
           <p className="text-blue-100 text-lg mb-6">Explore beautiful, responsive design elements</p>
           <div className="flex gap-4">

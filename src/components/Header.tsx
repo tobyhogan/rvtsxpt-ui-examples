@@ -13,31 +13,52 @@ function Header() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className={`text-xl font-bold ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
+              <Link to="/page1" className={`text-xl font-bold ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
                 UI Design Examples
               </Link>
             </div>
             <div className="hidden sm:ml-9 sm:flex sm:space-x-8">
               <Link
-                to="/"
+                to="/page1"
                 className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
-                  isActive('/')
+                  isActive('/page1')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
                 Designs 1
               </Link>
-            
               <Link
-                to="/second"
-                className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                  isActive('/second')
+                to="/page2"
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                  isActive('/page2')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
                 Designs 2
+              </Link>
+            
+              <Link
+                to="/page3"
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                  isActive('/page3')
+                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                Duolingo
+              </Link>
+
+              <Link
+                to="/page4"
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                  isActive('/page4')
+                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                Todoist
               </Link>
               
             </div>
