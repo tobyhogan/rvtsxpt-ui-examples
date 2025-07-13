@@ -1,4 +1,4 @@
-function HomePage() {
+function Page1() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
@@ -15,4 +15,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default Page1

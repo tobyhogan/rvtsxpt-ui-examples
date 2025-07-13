@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import HomePage from './pages/HomePage'
-import SecondPage from './pages/SecondPage'
+import Page1 from './pages/Page1'
+import Page2 from './pages/Page2'
 
 function App() {
   return (
@@ -10,8 +10,8 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/second" element={<SecondPage />} />
+            <Route path="/" element={<Page1 />} />
+            <Route path="/second" element={<Page2 />} />
           </Routes>
         </main>
       </div>

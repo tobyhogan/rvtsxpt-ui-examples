@@ -1,4 +1,4 @@
-function SecondPage() {
+function Page2() {
   return (
     <div className="min-h-screen bg-blue-100 flex items-center justify-center">
       <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
@@ -15,4 +15,4 @@ function SecondPage() {
   )
 }
 
-export default SecondPage
+export default Page2
