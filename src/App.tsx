@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
+import { NotificationProvider } from './contexts/NotificationContext'
 import Header from './components/Header'
+import ToastContainer from './components/ToastContainer'
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
 
@@ -17,6 +19,7 @@ function AppContent() {
             <Route path="/second" element={<Page2 />} />
           </Routes>
         </main>
+        <ToastContainer />
       </div>
     </Router>
   )
@@ -25,7 +28,9 @@ function AppContent() {
 function App() {
   return (
     <DarkModeProvider>
-      <AppContent />
+      <NotificationProvider>
+        <AppContent />
+      </NotificationProvider>
     </DarkModeProvider>
   )
 }
