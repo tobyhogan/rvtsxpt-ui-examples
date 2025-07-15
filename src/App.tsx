@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import { NotificationProvider } from './contexts/NotificationContext'
 import Header from './components/Header'
@@ -18,11 +18,13 @@ function AppContent() {
         <Header />
         <main>
           <Routes>
+            <Route path="/" element={<Navigate to="/page1" replace />} />
             <Route path="/page1" element={<Page1 />} />
             <Route path="/page2" element={<Page2 />} />
             <Route path="/page3" element={<Page3 />} />
             <Route path="/page4" element={<Page4 />} />
             <Route path="/page5" element={<Page5 />} />
+            <Route path="*" element={<Navigate to="/page1" replace />} />
           </Routes>
         </main>
         <ToastContainer />
