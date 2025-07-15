@@ -1,26 +1,38 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useDarkMode } from '../contexts/DarkModeContext'
+import { useState } from 'react'
 
 function Header() {
   const location = useLocation()
   const { isDarkMode, toggleDarkMode } = useDarkMode()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const isActive = (path: string) => location.pathname === path
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <header className={`shadow-sm border-b ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white'}`}>
-      <nav className="ml-[60px] mr-[40px] sm:px-6 lg:px-8">
+      <nav className="px-4 sm:ml-[60px] sm:mr-[40px] sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/page1" className={`text-xl font-bold ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
-                UI Design Examples
+              <Link to="/page1" className={`text-lg sm:text-xl font-bold whitespace-nowrap ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
+                <span className="hidden sm:inline">UI Design Examples</span>
+                <span className="sm:hidden">UI Examples</span>
               </Link>
             </div>
-            <div className="hidden sm:ml-9 sm:flex sm:space-x-8">
+            {/* Desktop Navigation */}
+            <div className="hidden sm:ml-9 sm:flex sm:space-x-8 overflow-hidden">
               <Link
                 to="/page1"
-                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
                   isActive('/page1')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
@@ -30,7 +42,7 @@ function Header() {
               </Link>
               <Link
                 to="/page2"
-                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
                   isActive('/page2')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
@@ -41,7 +53,7 @@ function Header() {
             
               <Link
                 to="/page3"
-                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
                   isActive('/page3')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
@@ -52,7 +64,7 @@ function Header() {
 
               <Link
                 to="/page4"
-                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
                   isActive('/page4')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
@@ -63,7 +75,7 @@ function Header() {
 
               <Link
                 to="/page5"
-                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium ${
+                className={`inline-flex items-center px-1 pt-1 text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
                   isActive('/page5')
                     ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
                     : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
@@ -75,9 +87,32 @@ function Header() {
             </div>
           </div>
           <div className="flex items-center">
+            {/* Mobile menu button */}
+            <div className="sm:hidden">
+              <button
+                onClick={toggleMobileMenu}
+                className={`p-2 rounded-md ${
+                  isDarkMode 
+                    ? 'text-gray-300 hover:text-white hover:bg-gray-700' 
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
+            {/* Dark mode toggle */}
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-md ${
+              className={`p-2 rounded-md ml-2 ${
                 isDarkMode 
                   ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600' 
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -96,6 +131,69 @@ function Header() {
             </button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="sm:hidden">
+            <div className={`pt-2 pb-3 space-y-1 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+              <Link
+                to="/page1"
+                onClick={closeMobileMenu}
+                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
+                  isActive('/page1')
+                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Designs 1
+              </Link>
+              <Link
+                to="/page2"
+                onClick={closeMobileMenu}
+                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
+                  isActive('/page2')
+                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Designs 2
+              </Link>
+              <Link
+                to="/page3"
+                onClick={closeMobileMenu}
+                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
+                  isActive('/page3')
+                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Duolingo
+              </Link>
+              <Link
+                to="/page4"
+                onClick={closeMobileMenu}
+                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
+                  isActive('/page4')
+                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Todoist
+              </Link>
+              <Link
+                to="/page5"
+                onClick={closeMobileMenu}
+                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
+                  isActive('/page5')
+                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
+                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Glassmorphism
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   )
