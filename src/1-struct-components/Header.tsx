@@ -2,10 +2,26 @@ import { Link, useLocation } from 'react-router-dom'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import { useState } from 'react'
 
+interface NavItem {
+  path: string
+  label: string
+}
+
 function Header() {
   const location = useLocation()
   const { isDarkMode, toggleDarkMode } = useDarkMode()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Centralized navigation items - change this array to update both desktop and mobile navigation
+  const navigationItems: NavItem[] = [
+    { path: '/page1', label: 'Designs 1' },
+    { path: '/page2', label: 'Designs 2' },
+    { path: '/page3', label: 'Duolingo' },
+    { path: '/page4', label: 'Todoist' },
+    { path: '/page5', label: 'Glassmorphism' },
+    { path: '/page6', label: 'Spotify' },
+    { path: '/page7', label: 'ProtonVPN' },
+  ]
 
   const isActive = (path: string) => location.pathname === path
 
@@ -30,60 +46,19 @@ function Header() {
             </div>
             {/* Desktop Navigation */}
             <div className="hidden sm:ml-4 md:ml-6 lg:ml-9 sm:flex sm:space-x-2 md:space-x-4 lg:space-x-8 overflow-hidden">
-              <Link
-                to="/page1"
-                className={`inline-flex items-center px-0.5 sm:px-1 pt-1 text-sm sm:text-[15px] md:text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
-                  isActive('/page1')
-                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Designs 1
-              </Link>
-              <Link
-                to="/page2"
-                className={`inline-flex items-center px-0.5 sm:px-1 pt-1 text-sm sm:text-[15px] md:text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
-                  isActive('/page2')
-                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Designs 2
-              </Link>
-            
-              <Link
-                to="/page3"
-                className={`inline-flex items-center px-0.5 sm:px-1 pt-1 text-sm sm:text-[15px] md:text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
-                  isActive('/page3')
-                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Duolingo
-              </Link>
-
-              <Link
-                to="/page4"
-                className={`inline-flex items-center px-0.5 sm:px-1 pt-1 text-sm sm:text-[15px] md:text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
-                  isActive('/page4')
-                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Todoist
-              </Link>
-
-              <Link
-                to="/page5"
-                className={`inline-flex items-center px-0.5 sm:px-1 pt-1 text-sm sm:text-[15px] md:text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
-                  isActive('/page5')
-                    ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                Glassmorphism
-              </Link>
-              
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`inline-flex items-center px-0.5 sm:px-1 pt-1 text-sm sm:text-[15px] md:text-[16px] font-medium whitespace-nowrap flex-shrink-0 ${
+                    isActive(item.path)
+                      ? isDarkMode ? 'text-blue-400 font-semibold' : 'text-blue-600 font-semibold'
+                      : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
           <div className="flex items-center">
@@ -136,61 +111,20 @@ function Header() {
         {isMobileMenuOpen && (
           <div className="sm:hidden">
             <div className={`pt-2 pb-3 space-y-1 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-              <Link
-                to="/page1"
-                onClick={closeMobileMenu}
-                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
-                  isActive('/page1')
-                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Designs 1
-              </Link>
-              <Link
-                to="/page2"
-                onClick={closeMobileMenu}
-                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
-                  isActive('/page2')
-                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Designs 2
-              </Link>
-              <Link
-                to="/page3"
-                onClick={closeMobileMenu}
-                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
-                  isActive('/page3')
-                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Duolingo
-              </Link>
-              <Link
-                to="/page4"
-                onClick={closeMobileMenu}
-                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
-                  isActive('/page4')
-                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Todoist
-              </Link>
-              <Link
-                to="/page5"
-                onClick={closeMobileMenu}
-                className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
-                  isActive('/page5')
-                    ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
-                    : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Glassmorphism
-              </Link>
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={closeMobileMenu}
+                  className={`block px-3 py-2 text-base font-medium whitespace-nowrap ${
+                    isActive(item.path)
+                      ? isDarkMode ? 'text-blue-400 bg-gray-700 font-semibold' : 'text-blue-600 bg-blue-50 font-semibold'
+                      : isDarkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
         )}
