@@ -39,9 +39,13 @@ function Header() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center mr-2 sm:mr-4 md:mr-6">
-              <Link to="/page1" className={`text-[20px] md:text-xl font-bold whitespace-nowrap ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
-                <span className="hidden sm:inline">UI Design Examples</span>
-                <span className="sm:hidden">UI Examples</span>
+              <Link to="/page1" className="flex items-center space-x-3">
+                <div className="bg-green-500 hover:bg-green-600 transition-colors duration-200 px-3 py-2 rounded-lg">
+                  <span className="text-white font-bold text-xl">UI</span>
+                </div>
+                <span className={`text-[20px] md:text-xl font-bold whitespace-nowrap hidden sm:inline ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
+                  Design Examples
+                </span>
               </Link>
             </div>
             {/* Desktop Navigation */}
