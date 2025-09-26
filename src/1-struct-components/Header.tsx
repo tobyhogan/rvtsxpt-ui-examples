@@ -21,6 +21,7 @@ function Header() {
     { path: '/page5', label: 'Glassmorphism' },
     { path: '/page6', label: 'Spotify' },
     { path: '/page7', label: 'ProtonVPN' },
+    { path: '/page8', label: 'iOS' },
   ]
 
   const isActive = (path: string) => location.pathname === path
