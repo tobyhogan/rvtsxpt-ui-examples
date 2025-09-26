@@ -22,6 +22,7 @@ function AppContent() {
         <main>
           <Routes>
             <Route path="/" element={<Navigate to="/page1" replace />} />
+            
             <Route path="/page1" element={<Page1 />} />
             <Route path="/page2" element={<Page2 />} />
             <Route path="/page3" element={<Page3 />} />
@@ -30,6 +31,7 @@ function AppContent() {
             <Route path="/page6" element={<Page6 />} />
             <Route path="/page7" element={<Page7 />} />
             <Route path="/page8" element={<Page8 />} />
+
             <Route path="*" element={<Navigate to="/page1" replace />} />
           </Routes>
         </main>
