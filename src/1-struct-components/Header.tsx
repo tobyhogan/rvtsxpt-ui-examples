@@ -42,7 +42,7 @@ function Header() {
             <div className="flex-shrink-0 flex items-center mr-2 sm:mr-4 md:mr-6">
               <Link to="/page1" className="flex items-center space-x-3">
 
-                <span className={`text-[20px] md:text-xl font-bold whitespace-nowrap hidden sm:inline ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
+                <span className={`text-lg sm:text-[20px] md:text-xl font-bold whitespace-nowrap ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
                   Design Examples
                 </span>
               </Link>
