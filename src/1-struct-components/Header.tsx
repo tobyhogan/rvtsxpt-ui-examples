@@ -12,16 +12,16 @@ function Header() {
   const { isDarkMode, toggleDarkMode } = useDarkMode()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  // Centralized navigation items - change this array to update both desktop and mobile navigation
+  
   const navigationItems: NavItem[] = [
     { path: '/page1', label: 'Designs 1' },
     { path: '/page2', label: 'Designs 2' },
-    { path: '/page3', label: 'Duolingo' },
-    { path: '/page4', label: 'Todoist' },
-    { path: '/page5', label: 'Glassmorphism' },
-    { path: '/page6', label: 'Spotify' },
-    { path: '/page7', label: 'ProtonVPN' },
-    { path: '/page8', label: 'iOS' },
+    { path: '/page3', label: 'Duolingo-esque' },
+    { path: '/page4', label: 'Todoist-esque' },
+    { path: '/page5', label: 'Glassmorphic' },
+    { path: '/page6', label: 'Spotify-esque' },
+    { path: '/page7', label: 'Proton-esque' },
+    { path: '/page8', label: 'IOS-esque' },
   ]
 
   const isActive = (path: string) => location.pathname === path
