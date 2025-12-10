@@ -74,7 +74,7 @@ export function ThemedDropdown({ theme, isOpen, onToggle, onSelect }: ThemedDrop
         </button>
         {isOpen && (
           <div className={`absolute top-full left-0 right-0 mt-1 md:mt-2 shadow-lg z-10 ${getDropdownStyle()}`}>
-            {theme.content.dropdownOptions.map((option) => (
+            {theme.content.dropdownOptions.map((option: { icon: string; label: string }) => (
               <button
                 key={option.label}
                 className={`w-full text-left px-4 py-2 md:py-3 ${getOptionStyle()} ${

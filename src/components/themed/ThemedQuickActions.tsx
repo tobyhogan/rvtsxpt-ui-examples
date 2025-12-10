@@ -37,7 +37,7 @@ export function ThemedQuickActions({ theme, onActionClick }: ThemedQuickActionsP
         {subtitle}
       </p>
       <div className="space-y-2">
-        {actions.map((action, index) => (
+        {actions.map((action: { icon: string; label: string }, index: number) => (
           <button
             key={index}
             onClick={() => onActionClick(action.label)}

@@ -94,7 +94,7 @@ export function ThemedProgress({ theme }: ThemedProgressProps) {
           </div>
         </div>
         <div className="grid grid-cols-3 gap-2 md:gap-4 mt-4 md:mt-6">
-          {items.map((item, index) => (
+          {items.map((item: { value: string; label: string; emoji?: string }, index: number) => (
             <div 
               key={index} 
               className={`text-center p-2 md:p-4 ${theme.styles.borderRadius.medium} ${statCardStyle(index)}`}

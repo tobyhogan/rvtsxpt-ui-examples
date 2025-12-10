@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import { useState } from 'react'
-import { themeList } from '../themes'
+import { themeList, Theme } from '../themes'
 
 interface NavItem {
   path: string
@@ -14,7 +14,7 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // Generate navigation items from themes
-  const navigationItems: NavItem[] = themeList.map(theme => ({
+  const navigationItems: NavItem[] = themeList.map((theme: Theme) => ({
     path: `/${theme.slug}`,
     label: theme.name,
   }))

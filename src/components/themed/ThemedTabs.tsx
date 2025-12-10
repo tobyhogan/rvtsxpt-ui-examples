@@ -57,7 +57,7 @@ export function ThemedTabs({ theme, selectedTab, onTabChange, children }: Themed
     <div className={`${containerClass} ${theme.styles.borderRadius.medium} p-6 ${theme.styles.shadow.medium}`}>
       {/* Tab Navigation */}
       <div className={`flex ${theme.slug === 'ios' ? 'bg-gray-200/50 dark:bg-gray-700/50 p-1 rounded-2xl backdrop-blur-sm' : 'space-x-1'} mb-6`}>
-        {theme.content.tabs.map((tab) => (
+        {theme.content.tabs.map((tab: string) => (
           <button
             key={tab}
             onClick={() => onTabChange(tab)}
