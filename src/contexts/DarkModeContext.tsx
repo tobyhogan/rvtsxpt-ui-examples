@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { DEFAULT_DARK_MODE } from '../config/defaults'
 
 interface DarkModeContextType {
   isDarkMode: boolean
@@ -10,7 +11,7 @@ const DarkModeContext = createContext<DarkModeContextType | undefined>(undefined
 // Helper function to get initial dark mode state from localStorage
 const getInitialDarkMode = (): boolean => {
   if (typeof window === 'undefined') {
-    return false // Default for SSR
+    return DEFAULT_DARK_MODE // Default for SSR
   }
   
   try {
@@ -19,11 +20,11 @@ const getInitialDarkMode = (): boolean => {
       return JSON.parse(savedMode)
     }
     
-    // If no saved preference, check system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
+    // Use the configured default from defaults.ts
+    return DEFAULT_DARK_MODE
   } catch (error) {
     console.warn('Error reading dark mode from localStorage:', error)
-    return false
+    return DEFAULT_DARK_MODE
   }
 }
 
