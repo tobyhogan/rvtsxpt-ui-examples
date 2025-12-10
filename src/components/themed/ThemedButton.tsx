@@ -34,6 +34,18 @@ export function ThemedButton({
     if (variant === 'secondary' && theme.customClasses?.secondaryButton) {
       return theme.customClasses.secondaryButton
     }
+    if (variant === 'success' && theme.customClasses?.successButton) {
+      return theme.customClasses.successButton
+    }
+    if (variant === 'danger' && theme.customClasses?.dangerButton) {
+      return theme.customClasses.dangerButton
+    }
+    if (variant === 'warning' && theme.customClasses?.warningButton) {
+      return theme.customClasses.warningButton
+    }
+    if (variant === 'info' && theme.customClasses?.infoButton) {
+      return theme.customClasses.infoButton
+    }
     
     // Default button styling by variant
     switch (variant) {
@@ -88,35 +100,61 @@ export function ThemedButtonGroup({ theme, title, subtitle, buttons }: ThemedBut
 
   // Get theme-specific button styling for toast buttons
   const getToastButtonStyle = (variant: string) => {
-    const baseStyle = `px-4 py-2 ${theme.styles.borderRadius.small} transition-colors text-sm text-white`
+    const baseStyle = `px-4 py-2 ${theme.styles.borderRadius.small} transition-all text-sm`
     
+    // Use theme's custom button classes if available
+    switch (variant) {
+      case 'success': 
+        if (theme.customClasses?.successButton) return `${baseStyle} ${theme.customClasses.successButton}`
+        break
+      case 'danger': 
+        if (theme.customClasses?.dangerButton) return `${baseStyle} ${theme.customClasses.dangerButton}`
+        break
+      case 'warning': 
+        if (theme.customClasses?.warningButton) return `${baseStyle} ${theme.customClasses.warningButton}`
+        break
+      case 'info': 
+        if (theme.customClasses?.infoButton) return `${baseStyle} ${theme.customClasses.infoButton}`
+        break
+    }
+    
+    // Theme-specific fallbacks for themes without custom button classes
     if (theme.slug === 'duolingo') {
       const borderStyle = 'border-b-4 shadow-lg transform hover:scale-105'
       switch (variant) {
-        case 'success': return `${baseStyle} bg-green-500 hover:bg-green-600 ${borderStyle} border-green-600 font-black`
-        case 'danger': return `${baseStyle} bg-red-500 hover:bg-red-600 ${borderStyle} border-red-600 font-black`
-        case 'warning': return `${baseStyle} bg-yellow-500 hover:bg-yellow-600 ${borderStyle} border-yellow-600 font-black`
-        case 'info': return `${baseStyle} bg-blue-500 hover:bg-blue-600 ${borderStyle} border-blue-600 font-black`
+        case 'success': return `${baseStyle} bg-green-500 hover:bg-green-600 ${borderStyle} border-green-600 font-black text-white`
+        case 'danger': return `${baseStyle} bg-red-500 hover:bg-red-600 ${borderStyle} border-red-600 font-black text-white`
+        case 'warning': return `${baseStyle} bg-yellow-500 hover:bg-yellow-600 ${borderStyle} border-yellow-600 font-black text-white`
+        case 'info': return `${baseStyle} bg-blue-500 hover:bg-blue-600 ${borderStyle} border-blue-600 font-black text-white`
       }
     }
     
     if (theme.slug === 'glassmorphic') {
       const glassStyle = 'backdrop-blur-md border border-white/30 shadow-lg hover:scale-105 transition-all'
       switch (variant) {
-        case 'success': return `${baseStyle} bg-green-500/50 hover:bg-green-500/70 ${glassStyle}`
-        case 'danger': return `${baseStyle} bg-red-500/50 hover:bg-red-500/70 ${glassStyle}`
-        case 'warning': return `${baseStyle} bg-yellow-500/50 hover:bg-yellow-500/70 ${glassStyle}`
-        case 'info': return `${baseStyle} bg-blue-500/50 hover:bg-blue-500/70 ${glassStyle}`
+        case 'success': return `${baseStyle} bg-green-500/50 hover:bg-green-500/70 ${glassStyle} text-white`
+        case 'danger': return `${baseStyle} bg-red-500/50 hover:bg-red-500/70 ${glassStyle} text-white`
+        case 'warning': return `${baseStyle} bg-yellow-500/50 hover:bg-yellow-500/70 ${glassStyle} text-white`
+        case 'info': return `${baseStyle} bg-blue-500/50 hover:bg-blue-500/70 ${glassStyle} text-white`
+      }
+    }
+    
+    if (theme.slug === 'todoist') {
+      switch (variant) {
+        case 'success': return `${baseStyle} bg-[#058527] hover:bg-[#047321] text-white font-medium`
+        case 'danger': return `${baseStyle} bg-[#DB4C3F] hover:bg-[#C9392C] text-white font-medium`
+        case 'warning': return `${baseStyle} bg-[#F59E0B] hover:bg-[#D97706] text-white font-medium`
+        case 'info': return `${baseStyle} bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium`
       }
     }
     
     // Default styling
     switch (variant) {
-      case 'success': return `${baseStyle} bg-green-600 hover:bg-green-700`
-      case 'danger': return `${baseStyle} bg-red-600 hover:bg-red-700`
-      case 'warning': return `${baseStyle} bg-yellow-600 hover:bg-yellow-700`
-      case 'info': return `${baseStyle} bg-blue-600 hover:bg-blue-700`
-      default: return baseStyle
+      case 'success': return `${baseStyle} bg-green-600 hover:bg-green-700 text-white`
+      case 'danger': return `${baseStyle} bg-red-600 hover:bg-red-700 text-white`
+      case 'warning': return `${baseStyle} bg-yellow-600 hover:bg-yellow-700 text-white`
+      case 'info': return `${baseStyle} bg-blue-600 hover:bg-blue-700 text-white`
+      default: return `${baseStyle} text-white`
     }
   }
 

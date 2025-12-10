@@ -154,6 +154,10 @@ export interface Theme {
     tabButtonActive?: string
     primaryButton?: string
     secondaryButton?: string
+    successButton?: string
+    dangerButton?: string
+    warningButton?: string
+    infoButton?: string
     card?: string
     cardDark?: string
     modal?: string

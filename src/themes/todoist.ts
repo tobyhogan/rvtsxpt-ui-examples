@@ -153,5 +153,9 @@ export const todoistTheme: Theme = {
     tabButtonActive: 'border-red-600 text-red-600',
     primaryButton: 'bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors',
     secondaryButton: 'border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors',
+    successButton: 'bg-[#058527] hover:bg-[#047321] text-white font-medium transition-colors',
+    dangerButton: 'bg-[#DB4C3F] hover:bg-[#C9392C] text-white font-medium transition-colors',
+    warningButton: 'bg-[#F59E0B] hover:bg-[#D97706] text-white font-medium transition-colors',
+    infoButton: 'bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium transition-colors',
   },
 }

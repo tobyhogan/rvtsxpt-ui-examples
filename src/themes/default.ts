@@ -149,5 +149,9 @@ export const defaultTheme: Theme = {
   customClasses: {
     heroContainer: 'bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6',
     heroContainerDark: 'bg-gradient-to-r from-blue-900 to-purple-900 rounded-2xl p-6',
+    successButton: 'bg-green-600 hover:bg-green-700 text-white font-medium transition-colors',
+    dangerButton: 'bg-red-600 hover:bg-red-700 text-white font-medium transition-colors',
+    warningButton: 'bg-yellow-600 hover:bg-yellow-700 text-white font-medium transition-colors',
+    infoButton: 'bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors',
   },
 }
