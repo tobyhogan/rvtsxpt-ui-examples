@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useDarkMode } from '../contexts/DarkModeContext'
 import { useState } from 'react'
+import { themeList } from '../themes'
 
 interface NavItem {
   path: string
@@ -12,17 +13,11 @@ function Header() {
   const { isDarkMode, toggleDarkMode } = useDarkMode()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  
-  const navigationItems: NavItem[] = [
-    { path: '/page1', label: 'Designs 1' },
-    { path: '/page2', label: 'Designs 2' },
-    { path: '/page3', label: 'Duolingo-esque' },
-    { path: '/page4', label: 'Todoist-esque' },
-    { path: '/page5', label: 'Glassmorphic' },
-    { path: '/page6', label: 'Spotify-esque' },
-    { path: '/page7', label: 'Proton-esque' },
-    { path: '/page8', label: 'IOS-esque' },
-  ]
+  // Generate navigation items from themes
+  const navigationItems: NavItem[] = themeList.map(theme => ({
+    path: `/${theme.slug}`,
+    label: theme.name,
+  }))
 
   const isActive = (path: string) => location.pathname === path
 
@@ -40,7 +35,7 @@ function Header() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center mr-2 sm:mr-4 md:mr-6">
-              <Link to="/page1" className="flex items-center space-x-3">
+              <Link to="/default" className="flex items-center space-x-3">
 
                 <span className={`text-lg sm:text-[20px] md:text-xl font-bold whitespace-nowrap ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}`}>
                   Design Examples
